@@ -4,3 +4,8 @@ out = "out"
 libs = ["lib"]
 
 # See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options
+[rpc_endpoints]
+map = "https://rpc.maplabs.io"
+merlin = "https://rpc.merlinchain.io"
+b2_haven = "https://haven-rpc.bsquared.network"
+bevm = "https://rpc-canary-1.bevm.io"

@@ -12,7 +12,7 @@ deploy-makaluToken:
 	forge script script/DeployMakaluToken.s.sol:DeployMakaluTokenScript --private-key ${HIVE_KEY} --broadcast --rpc-url ${MAKALU_RPC_URL}
 
 deploy-pancakeMulticallV2:
-	forge script script/DeployPancakeMulticallV2.s.sol:DeployPancakeMulticallV2Script --private-key ${HIVE_KEY} --broadcast --rpc-url ${MAKALU_RPC_URL}
+	forge script script/DeployPancakeMulticallV2.s.sol:DeployPancakeMulticallV2Script --private-key ${HIVE_KEY} --broadcast --rpc-url ${MAKALU_RPC_URL} --legacy
 
 set-receiver:
 	forge script script/MasterchefV3.s.sol:MasterchefV3 --private-key ${HIVE_KEY} --broadcast --rpc-url ${MAKALU_RPC_URL}
