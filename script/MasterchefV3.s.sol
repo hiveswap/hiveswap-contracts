@@ -62,9 +62,8 @@ contract MasterchefV3 is Script {
         console2.log("slot0 unlocked", unlocked);
         console2.log("Cake: ", IMasterChefV3(mscV3).CAKE());
     }
-
     function printProtocolFees() public view  {
-        (uint128 t0, uint128 t1) = IPancakeV3Pool(0x45e428dFF59008Fa24E11C8d21f82611BE4968Bc).protocolFees();
+        (uint128 t0, uint128 t1) = IPancakeV3Pool(0xd07458850b575535d79F30Cd879C8685B686d812).protocolFees();
         console2.log("protocolFees: ", t0, t1);
 //        address owner = IPancakeV3Factory(factory).owner();
 //        console2.log(owner);

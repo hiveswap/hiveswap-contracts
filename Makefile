@@ -6,7 +6,7 @@ deploy-weth9:
 	forge script script/DeployWETH9.s.sol:DeployWETH9Script --private-key ${HIVE_KEY} --broadcast --rpc-url ${MAKALU_RPC_URL}
 
 deploy-multicall3:
-	forge script script/DeployMulticall3.s.sol:DeployMulticall3Script --private-key ${HIVE_KEY} --broadcast --rpc-url ${MAKALU_RPC_URL} --legacy
+	forge script script/DeployMulticall3.s.sol:DeployMulticall3Script --private-key ${HIVE_KEY} --broadcast --rpc-url ${ETH_RPC_URL} --legacy
 
 deploy-makaluToken:
 	forge script script/DeployMakaluToken.s.sol:DeployMakaluTokenScript --private-key ${HIVE_KEY} --broadcast --rpc-url ${MAKALU_RPC_URL}
@@ -19,6 +19,9 @@ set-receiver:
 
 add:
 	forge script script/MasterchefV3.s.sol:MasterchefV3 --sig "add()" --private-key ${HIVE_KEY} --broadcast --rpc-url ${MAKALU_RPC_URL}
+
+deploy-locked:
+	forge script script/DeployLockedToken.s.sol:DeployLockedTokenScript --private-key ${HIVE_KEY} --broadcast --rpc-url ${MAKALU_RPC_URL}
 
 upkeep:
 	forge script script/MasterchefV3.s.sol:MasterchefV3 --sig "upkeep()" --private-key ${HIVE_KEY} --broadcast --rpc-url ${MAKALU_RPC_URL}
