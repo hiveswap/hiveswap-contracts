@@ -1,3 +1,5 @@
+include .env
+
 # https://rpc.maplabs.io
 deploy-hive:
 	forge script script/Deploy.s.sol:DeployScript --private-key ${HIVE_KEY} --broadcast --rpc-url ${MAKALU_RPC_URL}
@@ -40,3 +42,9 @@ collectFees:
 
 prepare:
 	forge script script/MasterchefV3.s.sol:MasterchefV3 --sig "prepare()" --private-key ${HIVE_KEY} --broadcast --rpc-url ${MAKALU_RPC_URL}
+
+deploy-merkle:
+	forge script script/MerkleDistributor.s.sol:MerkleDistributorScript --private-key ${HIVE_KEY} --broadcast --rpc-url ${MAP_RPC_URL}
+
+withdraw-merkle:
+	forge script script/MerkleDistributor.s.sol:MerkleDistributorScript --sig "withdraw()" --private-key ${HIVE_KEY} --broadcast --rpc-url ${MAP_RPC_URL}
