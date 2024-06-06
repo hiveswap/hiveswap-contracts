@@ -3,19 +3,31 @@ pragma solidity ^0.8.13;
 
 import {Script, console2} from "forge-std/Script.sol";
 import {MerkleDistributor} from "../src/airdrop/MerkleDistributor.sol";
+import "../src/Tester.sol";
 
 contract MerkleDistributorScript is Script {
     function setUp() public {}
 
     function run() public {
         vm.startBroadcast();
-        new MerkleDistributor(0x13CB04d4a5Dfb6398Fc5AB005a6c84337256eE23, 0x6759e8468ed28234850b0e6d9ad485bcc00f849b9f392b1c03ef77546ec63740);
+        new MerkleDistributor(0x13CB04d4a5Dfb6398Fc5AB005a6c84337256eE23, 0x4eebe2bbd5da7dcbc0c824752402e5bd93491015daad17eed203d114a1036d66);
         vm.stopBroadcast();
     }
 
     function withdraw() public {
         vm.startBroadcast();
-        MerkleDistributor(0xC5881DAa6D8B6010A195D03057e052D352cc9F50).withdraw();
+        MerkleDistributor(payable(0x9EC4a2FB40f49Cb9e438A470e3828ABE90AE5eC0)).withdraw();
+        vm.stopBroadcast();
+    }
+
+    function printAll() public {
+        bytes32 root = MerkleDistributor(payable(0x9EC4a2FB40f49Cb9e438A470e3828ABE90AE5eC0)).merkleRoot();
+        console2.logBytes32(root);
+    }
+
+    function tester() public {
+        vm.startBroadcast();
+        new Tester();
         vm.stopBroadcast();
     }
 }

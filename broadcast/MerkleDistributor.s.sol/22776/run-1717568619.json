@@ -1,7 +1,7 @@
 {
   "transactions": [
     {
-      "hash": "0x0f8ba3ad3ed201a5e8932c4938f8af65a249f3efd032604ed83857a0836ac159",
+      "hash": "0x8c9c74e138c9319ad1153ce11a73bd5becd56fac8ee24bc3f3ef688a634660f6",
       "transactionType": "CALL",
       "contractName": null,
       "contractAddress": "0x9EC4a2FB40f49Cb9e438A470e3828ABE90AE5eC0",
@@ -11,10 +11,10 @@
         "type": "0x02",
         "from": "0x50721fa72783d42d54e17b17546960305aa7f626",
         "to": "0x9ec4a2fb40f49cb9e438a470e3828abe90ae5ec0",
-        "gas": "0xbef2",
+        "gas": "0xbaa1",
         "value": "0x0",
         "data": "0x3ccfd60b",
-        "nonce": "0x52",
+        "nonce": "0x4f",
         "accessList": []
       },
       "additionalContracts": [],
@@ -23,14 +23,14 @@
   ],
   "receipts": [
     {
-      "transactionHash": "0x0f8ba3ad3ed201a5e8932c4938f8af65a249f3efd032604ed83857a0836ac159",
+      "transactionHash": "0x8c9c74e138c9319ad1153ce11a73bd5becd56fac8ee24bc3f3ef688a634660f6",
       "transactionIndex": "0x0",
-      "blockHash": "0x255c41b114b717bf47b4b4a9d2c52ed8391a32a633b88211f4b115752ba6a0b1",
-      "blockNumber": "0xb88a8a",
+      "blockHash": "0x630eb48ddebe852f43182d25eebde464c4c12d02e0a2afe446c85daef829b442",
+      "blockNumber": "0xb88a60",
       "from": "0x50721FA72783D42D54e17b17546960305Aa7F626",
       "to": "0x9EC4a2FB40f49Cb9e438A470e3828ABE90AE5eC0",
-      "cumulativeGasUsed": "0x8a3f",
-      "gasUsed": "0x8a3f",
+      "cumulativeGasUsed": "0x871f",
+      "gasUsed": "0x871f",
       "contractAddress": null,
       "logs": [
         {
@@ -40,10 +40,10 @@
             "0x0000000000000000000000009ec4a2fb40f49cb9e438a470e3828abe90ae5ec0",
             "0x00000000000000000000000050721fa72783d42d54e17b17546960305aa7f626"
           ],
-          "data": "0x0000000000000000000000000000000000000000000000ca6268669e72555555",
-          "blockHash": "0x255c41b114b717bf47b4b4a9d2c52ed8391a32a633b88211f4b115752ba6a0b1",
-          "blockNumber": "0xb88a8a",
-          "transactionHash": "0x0f8ba3ad3ed201a5e8932c4938f8af65a249f3efd032604ed83857a0836ac159",
+          "data": "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "blockHash": "0x630eb48ddebe852f43182d25eebde464c4c12d02e0a2afe446c85daef829b442",
+          "blockNumber": "0xb88a60",
+          "transactionHash": "0x8c9c74e138c9319ad1153ce11a73bd5becd56fac8ee24bc3f3ef688a634660f6",
           "transactionIndex": "0x0",
           "logIndex": "0x0",
           "removed": false
@@ -58,7 +58,7 @@
   "libraries": [],
   "pending": [],
   "returns": {},
-  "timestamp": 1717568858,
+  "timestamp": 1717568619,
   "chain": 22776,
   "multi": false,
   "commit": "64bb637"

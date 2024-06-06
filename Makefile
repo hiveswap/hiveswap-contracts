@@ -46,5 +46,11 @@ prepare:
 deploy-merkle:
 	forge script script/MerkleDistributor.s.sol:MerkleDistributorScript --private-key ${HIVE_KEY} --broadcast --rpc-url ${MAP_RPC_URL}
 
+deploy-tester:
+	forge script script/MerkleDistributor.s.sol:MerkleDistributorScript --sig "tester()" --private-key ${HIVE_KEY} --broadcast --rpc-url ${MAP_RPC_URL}
+
 withdraw-merkle:
 	forge script script/MerkleDistributor.s.sol:MerkleDistributorScript --sig "withdraw()" --private-key ${HIVE_KEY} --broadcast --rpc-url ${MAP_RPC_URL}
+
+printAll-merkle:
+	forge script script/MerkleDistributor.s.sol:MerkleDistributorScript --sig "printAll()" --private-key ${HIVE_KEY} --broadcast --rpc-url ${MAP_RPC_URL}
