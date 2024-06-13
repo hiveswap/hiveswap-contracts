@@ -45,7 +45,9 @@ contract MerkleDistributor is Ownable {
 
 //        IERC20(token).transfer(account, amount);
         IWETH(token).withdraw(amount);
-        payable(account).transfer(amount);
+//        payable(account).transfer(amount);
+        (bool success, ) = account.call{value: amount}("");
+        require(success, "Transfer failed");
 
         emit Claimed(index, account, amount);
     }
