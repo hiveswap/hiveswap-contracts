@@ -32,13 +32,13 @@ printAll:
 	forge script script/MasterchefV3.s.sol:MasterchefV3 --sig "printAll()" --private-key ${HIVE_KEY} --rpc-url ${MAKALU_RPC_URL}
 
 printFees:
-	forge script script/MasterchefV3.s.sol:MasterchefV3 --sig "printProtocolFees()" --private-key ${HIVE_KEY} --rpc-url ${MAKALU_RPC_URL}
+	forge script script/MasterchefV3.s.sol:MasterchefV3 --sig "printProtocolFees()" --private-key ${HIVE_KEY} --rpc-url ${MAP_RPC_URL}
 
 send:
 	forge script script/MasterchefV3.s.sol:MasterchefV3 --sig "send()" --private-key ${HIVE_KEY} --rpc-url ${MAKALU_RPC_URL} --broadcast
 
 collectFees:
-	forge script script/MasterchefV3.s.sol:MasterchefV3 --sig "collectProtocol()" --private-key ${HIVE_KEY} --rpc-url ${MAKALU_RPC_URL} --broadcast
+	forge script script/MasterchefV3.s.sol:MasterchefV3 --sig "collectProtocol()" --private-key ${HIVE_KEY} --rpc-url ${MAP_RPC_URL} --broadcast
 
 prepare:
 	forge script script/MasterchefV3.s.sol:MasterchefV3 --sig "prepare()" --private-key ${HIVE_KEY} --broadcast --rpc-url ${MAKALU_RPC_URL}
@@ -46,11 +46,23 @@ prepare:
 deploy-merkle:
 	forge script script/MerkleDistributor.s.sol:MerkleDistributorScript --private-key ${HIVE_KEY} --broadcast --rpc-url ${MAP_RPC_URL}
 
+deploy-claim:
+	forge script script/ClaimDistributor.s.sol:ClaimDistributorScript --private-key ${HIVE_KEY} --broadcast --rpc-url ${MAP_RPC_URL}
+
 deploy-tester:
 	forge script script/MerkleDistributor.s.sol:MerkleDistributorScript --sig "tester()" --private-key ${HIVE_KEY} --broadcast --rpc-url ${MAP_RPC_URL}
 
 withdraw-merkle:
 	forge script script/MerkleDistributor.s.sol:MerkleDistributorScript --sig "withdraw()" --private-key ${HIVE_KEY} --broadcast --rpc-url ${MAP_RPC_URL}
+
+withdraw-claim:
+	forge script script/ClaimDistributor.s.sol:ClaimDistributorScript --sig "withdraw()" --private-key ${HIVE_KEY} --broadcast --rpc-url ${MAP_RPC_URL}
+
+set-merkle:
+	forge script script/MerkleDistributor.s.sol:MerkleDistributorScript --sig "setMerkleRoot()" --private-key ${HIVE_KEY} --broadcast --rpc-url ${MAP_RPC_URL}
+
+set-claim-merkle:
+	forge script script/ClaimDistributor.s.sol:ClaimDistributorScript --sig "setMerkleRoot()" --private-key ${HIVE_KEY} --broadcast --rpc-url ${MAP_RPC_URL}
 
 printAll-merkle:
 	forge script script/MerkleDistributor.s.sol:MerkleDistributorScript --sig "printAll()" --private-key ${HIVE_KEY} --broadcast --rpc-url ${MAP_RPC_URL}

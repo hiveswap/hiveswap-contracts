@@ -28,6 +28,8 @@ contract MasterchefV3 is Script {
         uint256 totalBoostLiquidity;
     }
 
+    address poolMapAndStmap = 0xC72386590F9c60e9275a0dd13742D68d6902c532;
+    address recipient = 0x355538436ba2646b60Dc2A9c86Ce8301e26f7EA6;
     address hiveAddress = 0x01a960E07B25ea39B21F1E498722f19Fb3F0Ecc3;
     address wmap = 0x13CB04d4a5Dfb6398Fc5AB005a6c84337256eE23;
     address mscV3 = 0xD1486812609948406097A9476F68C417990C9DbA;
@@ -63,7 +65,8 @@ contract MasterchefV3 is Script {
         console2.log("Cake: ", IMasterChefV3(mscV3).CAKE());
     }
     function printProtocolFees() public view  {
-        (uint128 t0, uint128 t1) = IPancakeV3Pool(0xd07458850b575535d79F30Cd879C8685B686d812).protocolFees();
+        // wmap-stmap
+        (uint128 t0, uint128 t1) = IPancakeV3Pool(0xC72386590F9c60e9275a0dd13742D68d6902c532).protocolFees();
         console2.log("protocolFees: ", t0, t1);
 //        address owner = IPancakeV3Factory(factory).owner();
 //        console2.log(owner);
@@ -80,8 +83,8 @@ contract MasterchefV3 is Script {
 
     function collectProtocol() public {
         vm.startBroadcast();
-        IPancakeV3Factory(factory).collectProtocol(0x39659129b33A71B745Cb7969BDD5E524665c1061, 0x50721FA72783D42D54e17b17546960305Aa7F626, 19500000000000, 0);
-//        IPancakeV3Pool(0x10b8C60B45191C2E32a5AC7AC604Ac3807dEa48A).collectProtocol(0x0e367ce43859B170EF7DC147CE83e2e5ea8A6fbe, 19500000000000, 0);
+        (uint128 t0, uint128 t1) = IPancakeV3Pool(poolMapAndStmap).protocolFees();
+        IPancakeV3Factory(factory).collectProtocol(poolMapAndStmap, recipient, t0, t1);
         vm.stopBroadcast();
     }
 

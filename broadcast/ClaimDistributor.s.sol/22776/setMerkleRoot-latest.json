@@ -1,20 +1,23 @@
 {
   "transactions": [
     {
-      "hash": "0xe601d284a797fff974bbc5c19f457882f23d66b3f06311ddc2a11ccee0a9b21f",
+      "hash": "0xa38fa07fc66002bcc664523353902c02643b1e5788266196904873bac7fef81e",
       "transactionType": "CALL",
       "contractName": null,
-      "contractAddress": "0x2023Ccfd65cE64889fE450d34363539a1C7fdB99",
-      "function": "withdrawMAPO()",
-      "arguments": [],
+      "contractAddress": "0x18ab60FABe40A15236f39Fa5547a46b6221B71C9",
+      "function": "setMerkleRoot(uint256,bytes32)",
+      "arguments": [
+        "0",
+        "0x6acb2828c93eee09cf53f9e373972a3a9d1a5f3c0da415b6f166319bac465ed6"
+      ],
       "transaction": {
         "type": "0x02",
         "from": "0x50721fa72783d42d54e17b17546960305aa7f626",
-        "to": "0x2023ccfd65ce64889fe450d34363539a1c7fdb99",
-        "gas": "0xa3c1",
+        "to": "0x18ab60fabe40a15236f39fa5547a46b6221b71c9",
+        "gas": "0xf9ba",
         "value": "0x0",
-        "data": "0x71a1f3e0",
-        "nonce": "0x80",
+        "data": "0x18712c2100000000000000000000000000000000000000000000000000000000000000006acb2828c93eee09cf53f9e373972a3a9d1a5f3c0da415b6f166319bac465ed6",
+        "nonce": "0x7a",
         "accessList": []
       },
       "additionalContracts": [],
@@ -23,14 +26,14 @@
   ],
   "receipts": [
     {
-      "transactionHash": "0xe601d284a797fff974bbc5c19f457882f23d66b3f06311ddc2a11ccee0a9b21f",
+      "transactionHash": "0xa38fa07fc66002bcc664523353902c02643b1e5788266196904873bac7fef81e",
       "transactionIndex": "0x0",
-      "blockHash": "0x9c8e7b892a96e17d0e741e1065e0af997daca69f59874574e57a1a4687c7508a",
-      "blockNumber": "0xc2df2a",
+      "blockHash": "0xe04b1a48671f8bce54e108f29da13a42d97873860463385e42be042a17a4c313",
+      "blockNumber": "0xbe6f17",
       "from": "0x50721FA72783D42D54e17b17546960305Aa7F626",
-      "to": "0x2023Ccfd65cE64889fE450d34363539a1C7fdB99",
-      "cumulativeGasUsed": "0x768f",
-      "gasUsed": "0x768f",
+      "to": "0x18ab60FABe40A15236f39Fa5547a46b6221B71C9",
+      "cumulativeGasUsed": "0xb4cd",
+      "gasUsed": "0xb4cd",
       "contractAddress": null,
       "logs": [],
       "status": "0x1",
@@ -42,7 +45,7 @@
   "libraries": [],
   "pending": [],
   "returns": {},
-  "timestamp": 1721026945,
+  "timestamp": 1719556784,
   "chain": 22776,
   "multi": false,
   "commit": "fdb2741"

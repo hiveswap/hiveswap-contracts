@@ -11,37 +11,47 @@ interface IWETH is IERC20 {
 
 contract MerkleDistributor is Ownable {
     address public immutable token;
-    bytes32 public merkleRoot;
 
-    mapping(uint256 => bool) public claimedMap;
+    // epoll => root
+    mapping(uint256 => bytes32) public merkleRoots;
+
+    // epoll => index => claimed
+    mapping(uint256 => mapping(uint256 => bool)) public claimedMap;
 
     error AlreadyClaimed();
 
     error InvalidProof();
 
+    error WrongEpoll();
+
+    error WrongClaimsInput();
+
     // This event is triggered whenever a call to #claim succeeds.
-    event Claimed(uint256 index, address account, uint256 amount);
+    event Claimed(uint256 epoll, uint256 index, address account, uint256 amount);
 
-    constructor(address _token, bytes32 _merkleRoot) Ownable(msg.sender) {
+    constructor(address _token) Ownable(msg.sender) {
         token = _token;
-        merkleRoot = _merkleRoot;
     }
 
-    function setMerkleRoot(bytes32 _merkleRoot) public onlyOwner {
-        merkleRoot = _merkleRoot;
+    function setMerkleRoot(uint256 epoll, bytes32 _merkleRoot) public onlyOwner {
+        merkleRoots[epoll] = _merkleRoot;
     }
 
-    function claim(uint256 index, address account, uint256 amount, bytes32[] calldata merkleProof) public {
-        if (claimedMap[index]) {
+    function claim(uint256 epoll, uint256 index, address account, uint256 amount, bytes32[] calldata merkleProof) public {
+        if (merkleRoots[epoll] == bytes32(0)) {
+            revert WrongEpoll();
+        }
+
+        if (claimedMap[epoll][index]) {
             revert AlreadyClaimed();
         }
 
         bytes32 node = keccak256(abi.encodePacked(index, account, amount));
-        if (!MerkleProof.verify(merkleProof, merkleRoot, node)) {
+        if (!MerkleProof.verify(merkleProof, merkleRoots[epoll], node)) {
             revert InvalidProof();
         }
 
-        claimedMap[index] = true;
+        claimedMap[epoll][index] = true;
 
 //        IERC20(token).transfer(account, amount);
         IWETH(token).withdraw(amount);
@@ -49,7 +59,28 @@ contract MerkleDistributor is Ownable {
         (bool success, ) = account.call{value: amount}("");
         require(success, "Transfer failed");
 
-        emit Claimed(index, account, amount);
+        emit Claimed(epoll, index, account, amount);
+    }
+
+    function claims(
+        uint256[] calldata epolls,
+        uint256[] calldata indexes,
+        address[] calldata accounts,
+        uint256[] calldata amounts,
+        bytes32[][] calldata merkleProofs
+    ) public {
+        if (epolls.length != indexes.length ||
+            epolls.length != amounts.length ||
+            epolls.length != merkleProofs.length ||
+            epolls.length != accounts.length) {
+            revert WrongClaimsInput();
+        }
+
+        for (uint256 i = 0; i < epolls.length; i++) {
+            if (!claimedMap[epolls[i]][indexes[i]]) {
+                claim(epolls[i], indexes[i], accounts[i], amounts[i], merkleProofs[i]);
+            }
+        }
     }
 
     function withdraw() public onlyOwner {

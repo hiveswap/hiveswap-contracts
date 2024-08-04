@@ -5,8 +5,8 @@ import {Script, console2} from "forge-std/Script.sol";
 import {MerkleDistributor} from "../src/airdrop/MerkleDistributor.sol";
 import "../src/Tester.sol";
 
-contract MerkleDistributorScript is Script {
-    address merkleAddress = 0x2023Ccfd65cE64889fE450d34363539a1C7fdB99;
+contract ClaimDistributorScript is Script {
+    address merkleAddress = 0x18ab60FABe40A15236f39Fa5547a46b6221B71C9;
     function setUp() public {}
 
     function run() public {
@@ -18,19 +18,18 @@ contract MerkleDistributorScript is Script {
     function withdraw() public {
         // v1: 0x9EC4a2FB40f49Cb9e438A470e3828ABE90AE5eC0
         vm.startBroadcast();
-//        MerkleDistributor(payable(merkleAddress)).withdraw();
-        MerkleDistributor(payable(merkleAddress)).withdrawMAPO();
+        MerkleDistributor(payable(merkleAddress)).withdraw();
         vm.stopBroadcast();
     }
 
     function setMerkleRoot() public {
         vm.startBroadcast();
-        MerkleDistributor(payable(merkleAddress)).setMerkleRoot(3, 0x36f26ef4ac5d1bd18676a10f5a1ab3a4c37affa40bc32aea53513f7475177bb2);
+        MerkleDistributor(payable(merkleAddress)).setMerkleRoot(0, 0x6acb2828c93eee09cf53f9e373972a3a9d1a5f3c0da415b6f166319bac465ed6);
         vm.stopBroadcast();
     }
 
     function printAll() public view {
-        bytes32 root = MerkleDistributor(payable(merkleAddress)).merkleRoots(2);
+        bytes32 root = MerkleDistributor(payable(merkleAddress)).merkleRoots(0);
         console2.logBytes32(root);
     }
 
