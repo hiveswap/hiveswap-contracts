@@ -40,6 +40,9 @@ send:
 collectFees:
 	forge script script/MasterchefV3.s.sol:MasterchefV3 --sig "collectProtocol()" --private-key ${HIVE_KEY} --rpc-url ${MAP_RPC_URL} --broadcast
 
+setFee:
+	forge script script/MasterchefV3.s.sol:MasterchefV3 --sig "setProtocolFee()" --private-key ${HIVE_KEY} --rpc-url ${MAP_RPC_URL} --broadcast
+
 prepare:
 	forge script script/MasterchefV3.s.sol:MasterchefV3 --sig "prepare()" --private-key ${HIVE_KEY} --broadcast --rpc-url ${MAKALU_RPC_URL}
 

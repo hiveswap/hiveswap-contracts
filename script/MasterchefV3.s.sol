@@ -88,6 +88,12 @@ contract MasterchefV3 is Script {
         vm.stopBroadcast();
     }
 
+    function setProtocolFee() public {
+        vm.startBroadcast();
+        IPancakeV3Pool(poolMapAndStmap).setFeeProtocol(0, 0);
+        vm.stopBroadcast();
+    }
+
     function add() public {
         vm.startBroadcast();
 
